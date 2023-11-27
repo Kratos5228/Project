@@ -65,7 +65,7 @@ while run:
         leaderboard = []
 
         # Loading images for the game's UI elements
-        title_image = pygame.image.load('static/pongImg.png')
+        title_image = pygame.image.load(f'{BASE}static/pongImg.png')
 
         oneplayer_button_image = pygame.image.load(f"{BASE}/static/player1.png")
         twoplayer_button_image = pygame.image.load(f"{BASE}/static/player2.png")
