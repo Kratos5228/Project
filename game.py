@@ -356,13 +356,18 @@ while run:
                             main_menu_button.color = WHITE
 
 
+
         # Updates the leaderboard with the winner's name and score
         def update_leaderboard(leaderboard, winner_name):
             for i in range(len(leaderboard)):
                 if leaderboard[i][0] == winner_name:
                     leaderboard[i] = (winner_name, leaderboard[i][1] + 1)
-                    return
-            leaderboard.append((winner_name, 1))
+                    break
+            else:
+                leaderboard.append((winner_name, 1))
+
+            #sort the leaderboard by score in descending order
+            leaderboard.sort(key=lambda x: x[1], reverse=True)
 
         # Main function containing the game loop
         def main():
