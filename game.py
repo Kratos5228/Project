@@ -62,7 +62,7 @@ while run:
         PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100
         BALL_RADIUS = 7
         SCORE_FONT = pygame.font.SysFont("comicsans", 50)
-        WINNING_SCORE = 2
+        WINNING_SCORE = 5
 
         # Loading images for the game's UI elements
         title_image = pygame.image.load(f'{BASE}/static/pongImg.png')
