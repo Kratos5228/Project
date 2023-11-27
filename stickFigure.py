@@ -1,4 +1,7 @@
 import pygame
+import os
+
+BASE = os.path.dirname(os.path.abspath(__file__))
 
 # create a class to draw Stick Figure
 class StickFigure:
@@ -9,7 +12,7 @@ class StickFigure:
         # create a for loop to iterate through images
         for i in range(7):  # Player is allowed up to 6 guesses before losing, meaning there will be 6 images
             # Searches through images of hangman 
-            sf_image = pygame.image.load("/Users/ramonbernal/Desktop/FallProject/static/hangman" + str(i) + ".png")
+            sf_image = pygame.image.load(f"{BASE}/static/hangman" + str(i) + ".png")
             # Rescale the image drawn onto the screen
             sf_image = pygame.transform.scale(sf_image,(300,300))
             # append the images to the empty list
