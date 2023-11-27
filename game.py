@@ -9,6 +9,9 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 
 pygame.init()
 
+# Initialize an empty Pong leaderboard list, outside of any function definitions to declare it as global
+leaderboard = [] #this will allow the leaderboard to stay saved even when switching to other games
+
 print(BASE)
 
 backgroundimage = pygame.image.load(f"{BASE}/static/background.png")
@@ -60,9 +63,6 @@ while run:
         BALL_RADIUS = 7
         SCORE_FONT = pygame.font.SysFont("comicsans", 50)
         WINNING_SCORE = 2
-
-        # Initialize an empty leaderboard list
-        leaderboard = []
 
         # Loading images for the game's UI elements
         title_image = pygame.image.load(f'{BASE}/static/pongImg.png')
