@@ -33,8 +33,6 @@ exit_image_button = Button(1050, 800, exit_image, 0.4)
 
 time = pygame.time.Clock()
 
-rocks = []
-
 # Main Menu Loop
 run = True
 while run:
@@ -43,6 +41,7 @@ while run:
     pygame.display.set_caption('Game Menu')
   
     if space_racer_button.draw(mainDisplay):
+        rocks = []
         disp1 = pygame.display.set_mode((1250, 900))
         handler = Handler(disp1)
         handler.playGame(background, rocks)

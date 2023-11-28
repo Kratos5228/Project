@@ -105,16 +105,24 @@ class Handler:
     
     def movingAsteroids(self, rocks, display):
 
+        # timer used to determine when to add more rocks
         self.count += 1
+        # the speed on how the asteroids enter by changing the 30
         if self.count % 30 == 0:
+        # creates two Asteroid object in the rocks list, two rocks will be displayed 
             rocks.append(Asteroid())
             rocks.append(Asteroid())
         for a in rocks:
+            # shifts the rocks left or right
             a.move()   
-            if a.xv > 0 and a.x > 1200:
+            # if the rocks objects exits the screen and velocity is positive it pops
+            if a.xv > 0 and a.x > 1250:
                 rocks.pop(rocks.index(a))
-            if a.xv < 0 and a.x < -a.w:
+            # if the rocks objects exits the screen and velocity is negative it pops
+            if a.xv < 0 and a.x < -10:
                 rocks.pop(rocks.index(a))
+            # if the rocket collides with the asteroid it resets depending on the 
+            # rocket and pops the rock object it hit
             if self.rocket1.isCollision(a):
                 rocks.pop(rocks.index(a))
                 self.rocket1.y = 790
@@ -122,6 +130,7 @@ class Handler:
                 rocks.pop(rocks.index(a))
                 self.rocket2.y = 790
         
+        # draws the rocks on the display
         for r in rocks:
             r.draw(display)    
 

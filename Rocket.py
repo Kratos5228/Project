@@ -20,15 +20,22 @@ class Rocket():
     def update(self):
         self.y += self.yv
 
+    # Checks if the rocket and  the rocks collided 
     def isCollision(self, rocks):
+        # checks if the left point of player is to the rocks right point
+        # and if the right point of player is to the rocks right point
+        # checks if overlapping from left position
         if self.x < rocks.x + rocks.w and self.x + self.w > rocks.x + rocks.w:
+            # checks if to overlaps on the y - axis
             if self.y < rocks.y + rocks.h and self.y + self.h > rocks.y:
                 return True
 
+        #checks if ther is overlapping from the right position
         if self.x + self.w > rocks.x and self.x < rocks.x:
             if self.y < rocks.y + rocks.h and self.y + self.h > rocks.y:
                 return True
         
+        # if the rocket trys to exits the screen it resets
         if self.y > 850:
             return True
 
