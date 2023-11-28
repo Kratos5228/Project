@@ -316,7 +316,7 @@ while run:
                 win.blit(score_text, (WIDTH//2 - score_text.get_width()//2, 100 + i * 50))
 
             pygame.display.update()
-            pygame.time.delay(5000)
+            pygame.time.delay(5)
 
         # Shows options after a game has finished
         def post_game_options(win):
