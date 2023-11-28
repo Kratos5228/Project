@@ -41,7 +41,7 @@ while run:
 
     mainDisplay.fill((0, 0, 0))
     pygame.display.set_caption('Game Menu')
-    
+  
     if space_racer_button.draw(mainDisplay):
         disp1 = pygame.display.set_mode((1250, 900))
         handler = Handler(disp1)
@@ -323,7 +323,8 @@ while run:
             play_again_button = ImageButton(WIDTH // 2 - 125, 150, play_again_image, scale=0.6)
             main_menu_button = ImageButton(WIDTH // 2 - 125, 250, main_menu_image, scale=0.6)
 
-            while True:
+            run = True
+            while run:
                 win.fill(BLACK)
                 play_again_button.draw(win)
                 main_menu_button.draw(win)
@@ -334,8 +335,8 @@ while run:
                     pos = pygame.mouse.get_pos()
 
                     if event.type == pygame.QUIT:
-                        pygame.quit()
-                        return None
+                        mainDisplay = pygame.display.set_mode((1250,900)) #(X,Y)
+                        run = False
 
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         if play_again_button.is_over(pos):
@@ -395,9 +396,8 @@ while run:
 
                         for event in pygame.event.get():
                             if event.type == pygame.QUIT:
-                                run = False
-                                pygame.quit()
-                                return
+                                mainDisplay = pygame.display.set_mode((1250,900)) #(X,Y)
+                                return 2
 
                         keys = pygame.key.get_pressed()
                         handle_paddle_movement(keys, left_paddle, right_paddle, ball, player_mode)
@@ -461,9 +461,8 @@ while run:
         
     #event handler
     for event in pygame.event.get():
-        #quit game
         if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
+            pygame.quit()
+            exit()
 
     pygame.display.update() 

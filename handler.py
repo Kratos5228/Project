@@ -22,6 +22,7 @@ class Handler:
 
     def listen(self, bg, rk):     
         for event in pygame.event.get():
+            self.pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
                 self.running = False
             if event.type == pygame.KEYDOWN:
@@ -34,10 +35,10 @@ class Handler:
                 elif event.key == pygame.K_UP:
                     print("Up")
                     self.rocket2.yv -= 5
-                elif event.key  == pygame.K_w:
+                elif event.key == pygame.K_w:
                     print("W")
                     self.rocket1.yv -= 5
-                elif event.key  == pygame.K_s:
+                elif event.key == pygame.K_s:
                     print("S")
                     self.rocket1.yv += 5
                 elif event.key == pygame.K_ESCAPE:
@@ -81,36 +82,25 @@ class Handler:
         player1WinsText = font.render("Player 1 Wins", 1, (0, 0, 255))
         player2WinsText = font.render("Player 2 Wins", 1, (255, 0, 0))
         playText = font.render("T - Play Again", 1, (255, 255, 255))
-        exitText = font.render("G - Go Home", 1, (255, 255, 255))
 
         self.exitOut_button = Button(1000, 50, self.exitOut_button_image, scale=0.4)
 
-        if self.rocket1.score == 1:
+        if self.rocket1.score == 5:
             self.display.fill((0,0,0))
             self.display.blit(player1WinsText, (450, 200))
             self.display.blit(playText, (450, 400))
             self.exitOut_button.draw(self.display)
-            self.display.blit(exitText, (450, 600))
+            self.rocket1.y = 790
+            self.rocket2.y = 790
             
     
-        if self.rocket2.score == 1:
+        if self.rocket2.score == 5:
             self.display.fill((0,0,0))
             self.display.blit(player2WinsText, (450, 200))
             self.display.blit(playText, (450, 400))
             self.exitOut_button.draw(self.display)
-            self.display.blit(exitText, (450, 600))
-
-        for event in pygame.event.get():
-            self.pos = pygame.mouse.get_pos()
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_g:
-                    self.running = False
-                    print("G")
-                
-            # if event.type == pygame.MOUSEBUTTONDOWN:
-            #     if self.exitOut_button.rect.collidepoint(self.pos):
-            #         self.running = False
+            self.rocket1.y = 790
+            self.rocket2.y = 790
 
     
     def movingAsteroids(self, rocks, display):
@@ -144,6 +134,8 @@ class Handler:
         self.running = True
         while self.running:  
 
+            time = pygame.time.Clock()
+
             self.display.fill((0,0,0))
             self.display.blit(background, (0,0))
 
@@ -162,5 +154,7 @@ class Handler:
                 
             self.gameOver()
                 
+            time.tick(30)
+
             pygame.display.update() 
              
